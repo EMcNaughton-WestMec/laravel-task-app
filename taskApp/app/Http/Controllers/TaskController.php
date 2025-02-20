@@ -18,12 +18,12 @@ class TaskController extends Controller
         $query = Task::query();
 
         if (!empty($search)) {
-            $query->where(function($q) use ($search)) {
+            $query->where(function($q) use ($search) {
                 $q->where('task_name', 'like', '%'.$search.'%')
-                ->oWhere('task_location', 'like', '%'.$search.'%')
+                ->orWhere('task_location', 'like', '%'.$search.'%')
                 ->orWhere('category', 'like', '%'.$search.'%')
-                ->orWhere('materials_required', 'like', '%'.$search.'%')
-            }
+                ->orWhere('materials_required', 'like', '%'.$search.'%');
+            });
         }
 
         switch ($sort) {
@@ -40,7 +40,7 @@ class TaskController extends Controller
                 $query->orderBy('task_name', 'asc');
                 break;
         }
-        $task = $query->get();
+        $tasks = $query->get();
 
         return view('tasks.index', compact('tasks', 'search', 'sort'));
     }
