@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
 {
-    // Which attributes can be mass assigned
     protected $fillable = [
         'task_name',
         'task_location',
