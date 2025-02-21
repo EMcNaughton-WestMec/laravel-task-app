@@ -1,15 +1,5 @@
 @extends('layouts.app')
 @section('content')
-<<<<<<< HEAD
-   <h1 class="text-2xl font-bold mb-4">All Tasks</h1>
-   <ul>
-      @forelse($tasks as $task)
-      <li class="mb-2">
-         {{ $task->task_name}}
-      </li>
-      @empty
-      <li>No tasks yet.</li>
-=======
    <h2 class="text-2xl font-semibold">All Tasks</h2>
    <form action="{{ route('tasks.index') }}" method="GET" class="mb-4">
       <!-- Search Field -->
@@ -47,7 +37,6 @@
       </li>
       @empty
          <li>No tasks yet.</li>
->>>>>>> upstream/main
       @endforelse
    </ul>
 
