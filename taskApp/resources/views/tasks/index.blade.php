@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
    <h2 class="text-2xl font-semibold">All Tasks</h2>
-   <form action="{{ route('tasks.index') }}" method="GET" class="mb-4">
+   <form action="{{ route('tasks.index') }}" method="GET">
       <!-- Search Field -->
       <input
          type="text"
@@ -22,16 +22,16 @@
          Category
          </option>
       </select>
-      <button type="submit" class="bg-blue-500 text-white px-4 py-2 ml-2 rounded hover:bg-blue-600">
+      <button type="submit" class="bg-gray-800 text-white px-4 py-2 ml-2 rounded hover:bg-gray-600">
          Search & Sort
       </button>
    </form>
-   <ul>
+   <ul class="ml-8">
       @forelse ($tasks as $task)
       <li class="mb-2">
       {{ $task->task_name }}
       <!-- Link to the show page -->
-         <a href="{{ route('tasks.show', $task->id) }}" class="text-blue-500 underline ml-2">
+         <a href="{{ route('tasks.show', $task->id) }}" class="text-black-500 ml-2 bg-gray-300 rounded mx-auto px-2">
             View
          </a>
       </li>
@@ -41,8 +41,10 @@
    </ul>
 
    <div class="mt-4">
-      <a href="{{route('tasks.create')}}" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-         Create a New Task
-      </a>
+      <a href="{{ route('tasks.create') }}"
+      class="bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-600">
+      Create a New Task
+   </a>
    </div>
+   <!-- Content for displaying tasks goes here -->
 @endsection
