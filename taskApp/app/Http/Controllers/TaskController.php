@@ -92,7 +92,7 @@ class TaskController extends Controller
         $task = Task::findOrFail($id);
         $task->update($validated);
 
-        return redirect()->route('task.index')->with('success', 'Task updated successfully!');
+        return redirect()->route('tasks.index')->with('success', 'Task updated successfully!');
     }
 
     /**
