@@ -14,7 +14,9 @@ class TaskController extends Controller
     {
         $search = $request->input('search');
         $sort = $request->input('sort');
+
         $query = Task::query();
+
         if (!empty($search)) {
             $query->where(function($q) use ($search) {
                 $q->where('task_name', 'like', '%'.$search.'%')
@@ -23,37 +25,31 @@ class TaskController extends Controller
                 ->orWhere('materials_required', 'like', '%'.$search.'%');
             });
         }
+
         switch ($sort) {
             case 'deadline':
                 $query->orderBy('deadline', 'asc');
-            break;
+                break;
             case 'task_name':
                 $query->orderBy('task_name', 'asc');
                 break;
-                case 'category':
-                    $query->orderBy('category', 'asc');
-                    break;
-                    default:
-                    $query->orderBy('task_name', 'asc');
-                }
-                $tasks = $query->get();
-                return view('tasks.index', compact('tasks', 'search', 'sort'));
-            }
+            case 'category':
+                $query->orderBy('category', 'asc');
+                break;
+            default:
+                $query->orderBy('task_name', 'asc');
+                break;
+        }
+        $tasks = $query->get();
 
-
-
-    //     // Get all tasks
-    //     $tasks = Task::all();
-    //     // Return a view with tasks data
-    //     return view('tasks.index', compact('tasks'));
-    // }
+        return view('tasks.index', compact('tasks', 'search', 'sort'));
+    }
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        // Return a view to create a new task
         return view('tasks.create');
     }
 
@@ -62,7 +58,6 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        // Validate the Request
         $validated = $request->validate([
             'task_name' => 'required|string|max:255',
             'task_location' => 'nullable|string|max:255',
@@ -72,14 +67,13 @@ class TaskController extends Controller
             'priority' => 'nullable|integer|min:1|max:3',
             'category' => 'nullable|string|max:255',
         ]);
-        // Create and Save Task
+
         Task::create($validated);
-        // Redirect or Return
         return redirect()->route('tasks.index')->with('success', 'Task created successfully!');
     }
 
     /**
-     * Display the specified task.
+     * Display the specified resource.
      */
     public function show(Task $task)
     {
@@ -92,17 +86,18 @@ class TaskController extends Controller
     public function edit(string $id)
     {
         $task = Task::findOrFail($id);
-        return view('tasks.edit', compact('task'));
+
+        return view('task.edit', compact('task'));
     }
 
     /**
-     * Update the specified tasl
+     * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
     {
         $validated = $request->validate([
             'task_name' => 'required|string|max:255',
-            'task_location' => 'nullable|string|max:255',
+            'task_loaction' => 'nullable|string|max:255',
             'time_complexity' => 'required|integer|min:1|max:255',
             'materials_required' => 'nullable|string',
             'deadline' => 'nullable|date',
@@ -113,17 +108,17 @@ class TaskController extends Controller
         $task = Task::findOrFail($id);
         $task->update($validated);
 
-        return redirect()->route('tasks.index')->with('success', 'Task updated successfully!');
+        return redirect()->route('task.index')->with('success', 'Task updated successfully!');
     }
 
     /**
-     * Remove the specified task from storage.
+     * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
         $task = Task::findOrFail($id);
         $task->delete();
 
-        return redirect()->route('tasks.index')->with('success', 'Task deleted successfully!');
+        return redirect()->route('task.index')->with('success', 'Task deleted successfully!');
     }
 }
