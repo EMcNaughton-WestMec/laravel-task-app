@@ -7,13 +7,11 @@
             @csrf
             <div class="mb-4">
                 <label for="task_name" class="block mb-1">Task Name</label>
-                <input type="text" name="task_name" id="task_name" required
-                class="w-full border rounded px-3 py-2">
+                <input type="text" name="task_name" id="task_name" required pattern="^[a-zA-Z0-9\s\-_]{3,255}$" title="Task name must be 3-255 characters long and can contain letters, numbers, spaces, hyphens" class="w-full border rounded px-3 py-2" oninvalid="this.setCustomValidity('Please enter a valid task name')" oninput="this.setCustomValidity('')">
             </div>
             <div class="mb-4">
                 <label for="task_location" class="block mb-1">Location (Optional)</label>
-                <input type="text" name="task_location" id="task_location"
-                class="w-full border rounded px-3 py-2">
+                <input type="text" name="task_location" id="task_location" pattern="^[a-zA-Z0-9\s\-_,]{0,255}$" title="Location can contain letters, numbers, spaces, hyphens, underscores and commas" class="w-full border rounded px-3 py-2">
             </div>
             <div class="mb-4">
                 <label for="time_complexity" class="block mb-1">Time Estimate</label>
@@ -27,8 +25,7 @@
             </div>
             <div class="mb-4">
                 <label for="materials_required" class="block mb-1">Materials Required (Optional)</label>
-                <input type="text" name="materials_required" id="materials_required"
-                class="w-full border rounded px-3 py-2"
+                <input type="text" name="materials_required" id="materials_required" class="w-full border rounded px-3 py-2"
                 placeholder="e.g., Trash Bags, Broom">
             </div>
             <div class="mb-4">
@@ -46,9 +43,7 @@
             </div>
             <div class="mb-4">
                 <label for="category" class="block mb-1">Category (Optional)</label>
-                <input type="text" name="category" id="category"
-                class="w-full border rounded px-3 py-2"
-                placeholder="e.g., chores, work, health">
+                <input type="text" name="category" id="category" pattern="^[a-zA-Z\s]{0,50}$" title="Category must contain only letters and spaces" class="w-full border rounded px-3 py-2" placeholder="e.g., chores, work, health">
             </div>
             <div class="flex gap-4">
             <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
