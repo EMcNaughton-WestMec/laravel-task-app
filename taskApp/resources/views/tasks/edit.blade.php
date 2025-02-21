@@ -7,7 +7,7 @@
         @method('PUT') {{-- Important for updating (PUT/PATCH) --}}
 
         <div class="mb-2">
-            <label for="task_name">Task Name:</label>
+            <label for="task_name" class="font-bold">Task Name:</label>
             <input type="text" name="task_name" id="task_name"
             value="{{ old('task_name', $task->task_name) }}">
             @error('task_name')
@@ -15,7 +15,7 @@
             @enderror
         </div>
         <div class="mb-2">
-            <label for="task_location">Location:</label>
+            <label for="task_location" class="font-bold">Location:</label>
             <input type="text" name="task_location" id="task_location"
             value="{{ old('task_location', $task->task_location) }}">
             @error('task_location')
@@ -23,7 +23,7 @@
             @enderror
         </div>
         <div class="mb-2">
-            <label for="time_complexity">Time Complexity:</label>
+            <label for="time_complexity" class="font-bold">Time Complexity:</label>
             <input type="number" name="time_complexity" id="time_complexity"
             value="{{ old('time_complexity', $task->time_complexity) }}" min="1" max="5">
             @error('time_complexity')
@@ -31,7 +31,7 @@
             @enderror
         </div>
         <div class="mb-2">
-            <label for="materials_required">Materials Required:</label>
+            <label for="materials_required" class="font-bold">Materials Required:</label>
             <input type="text" name="materials_required" id="materials_required"
             value="{{ old('materials_required', $task->materials_required) }}">
             @error('materials_required')
@@ -39,7 +39,7 @@
             @enderror
         </div>
         <div class="mb-2">
-            <label for="deadline">Deadline:</label>
+            <label for="deadline" class="font-bold">Deadline:</label>
             <input type="date" name="deadline" id="deadline"
 
             value="{{ old('deadline', $task->deadline) }}">
@@ -48,7 +48,7 @@
             @enderror
         </div>
         <div class="mb-2">
-            <label for="priority" >Priority:</label>
+            <label for="priority" class="font-bold">Priority:</label>
             <input type="number" name="priority" id="priority"
             value="{{ old('priority', $task->priority) }}" min="1" max="3">
             @error('priority')
@@ -56,7 +56,7 @@
             @enderror
         </div>
         <div class="mb-2">
-            <label for="category">Category:</label>
+            <label for="category" class="font-bold">Category:</label>
             <input type="text" name="category" id="category"
             value="{{ old('category', $task->category) }}">
             @error('category')
