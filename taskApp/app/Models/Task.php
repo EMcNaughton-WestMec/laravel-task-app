@@ -24,7 +24,7 @@ class Task extends Model
                 'required',
                 'string',
                 'max:255',
-                'reqex:/^[a-zA-Z0-9\s\-_]{3,255}$/'
+                'regex:/^[a-zA-Z0-9\s\-_]{3,255}$/'
             ],
             'task_location' => [
                 'nullable',
