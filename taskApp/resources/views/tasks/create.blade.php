@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
-    <div class="max-w-2xl mx-auto p-4">
-        <h1 class="text-2xl font-bold mb-4">Create New Task</h1>
+    <div class="max-w-2xl mx-auto p-4 bg-gray-300 rounded-lg">
+        <h1 class="text-2xl font-bold mb-4 underline flex items-center justify-center">Create New Task</h1>
 
         <form action="{{ route('tasks.store') }}" method="POST">
             @csrf
@@ -51,10 +51,10 @@
                 placeholder="e.g., chores, work, health">
             </div>
             <div class="flex gap-4">
-            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+            <button type="submit" class="bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-600">
                 Create Task
             </button>
-            <a href="{{ url('/') }}" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">
+            <a href="{{ url('/') }}" class="bg-red-700 text-white px-4 py-2 rounded hover:bg-red-500">
                 Cancel
             </a>
             </div>

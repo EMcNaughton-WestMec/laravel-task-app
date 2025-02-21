@@ -15,8 +15,4 @@ class Task extends Model
         'priority',
         'category',
     ];
-<<<<<<< HEAD
-    //
-=======
->>>>>>> upstream/main
 }

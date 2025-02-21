@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('task_name');
             $table->string('task_location')->nullable();
             // Integer for Time Complexity
-            $table->tinyInteger('time_coplexity');
+            $table->tinyInteger('time_complexity');
             // Could store multiple if made a text field
             $table->string('materials_required')->nullable();
             //
